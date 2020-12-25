@@ -38,5 +38,3 @@ Object.defineProperty(transaction, 'finalBalance', {
 });
 
 console.log(transaction);
-
-
