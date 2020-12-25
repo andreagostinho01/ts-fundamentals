@@ -1,9 +1,4 @@
-const character = 'mario';
+let username = 'André';
 
-console.log(character);
-
-const inputs = document.querySelectorAll('input');
-
-inputs.forEach(input => {
-  console.log(input);
-});
+const logUsername = username => console.log(username);
+logUsername(username);
