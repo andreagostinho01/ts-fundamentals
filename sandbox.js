@@ -1,28 +1,32 @@
-// arrays
-var names = ['luigi', 'mario', 'yoshi'];
-names.push('toad');
-// names.push(3);
-// names[1] = 3;
-var numbers = [10, 20, 12, 15];
-numbers.push(25);
-// numbers.push('shaun');
-// numbers[0] = 'shaun';
-var mixed = ['ken', 4, 'chun-li', 8, 9];
-mixed.push('ryu');
-mixed.push(10);
-mixed[0] = 3;
-// objects
-var ninja = {
-    name: 'mario',
-    belt: 'black',
-    age: 30
+// a typed array can only contain elements of the same type
+var typedArr = ['Jaú', 'Bauru', 'Bariri'];
+//typedArr.push(21); // error
+typedArr.push('Bocaina'); // ok
+console.log(typedArr);
+// however we can still have a type mixed array
+var mixedArr = ['Pavê', 18, false, 'Pudim'];
+mixedArr.push(12); // ok
+mixedArr.push('Sorvete'); // ok
+console.log(mixedArr);
+// the same works for objects
+var myObj = {
+    name: 'Fit',
+    brand: 'Honda',
+    year: 2004
 };
-ninja.age = 40;
-ninja.name = 'ryu';
-// ninja.age = '30';
-// ninja.skills = ['fighting', 'sneaking']
-ninja = {
-    name: 'yoshi',
-    belt: 'orange',
-    age: 40
+// myObj.year = '2004'; // error
+myObj.year = 2008; // ok
+console.log(myObj);
+// typescript does not allow creating new properties in an object after its declaration
+var transaction = {
+    date: '23/12/2020',
+    value: 150
 };
+// transaction.finalBalance = 1000; // error
+console.log(transaction);
+// otherwise we can add a new prop to the object using the defineProperty function
+Object.defineProperty(transaction, 'finalBalance', {
+    value: 1000,
+    writable: true
+});
+console.log(transaction);
