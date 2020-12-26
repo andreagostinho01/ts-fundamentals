@@ -20,3 +20,10 @@ mixedArray.push(2020);
 mixedArray.push(true);
 mixedArray.push({ name: 'André', age: 19 });
 console.log(mixedArray);
+// predefined object
+var person;
+person = {
+    name: 'Renan',
+    age: 17
+};
+console.log(person);

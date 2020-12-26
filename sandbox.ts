@@ -28,3 +28,16 @@ mixedArray.push(true);
 mixedArray.push({ name: 'André', age: 19, });
 
 console.log(mixedArray);
+
+// predefined object
+let person: {
+    name: string,
+    age: number,
+};
+
+person = {
+    name: 'Renan',
+    age: 17,
+};
+
+console.log(person);
