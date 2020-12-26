@@ -1,36 +1,30 @@
-let character: string = 'mario';
-let age: number;
-let isLoggedIn: boolean;
+// explicit types
+let vehicleModel: string;
+let vehicleBrand: string = 'The vehicle brand';
+let isElectric: boolean;
 
-// age = 'luigi';
-age = 30;
+console.log(vehicleBrand);
 
-// isLoggedIn = 25;
-isLoggedIn = true;
+// explicit types on arrays
+let arrayOfStrings: string[] = [];
+let arrayOfObjects: object[] = [];
+let arrayOfNumbers: number[] = [1, 2, 3];
 
-// arrays
-let ninjas: string[] = [];
+console.log(arrayOfNumbers);
 
-ninjas.push('ryu');
-ninjas.push('chun-li');
-console.log(ninjas);
+// union types: used when a variable can have different types
+let appVersion: string|number; // parentheses are optional
+let mixedArray: (string|number|boolean|object)[] = []; // parentheses are required
 
-// union types
-let mixed: (string|number|boolean)[] = [];
-mixed.push('hello');
-mixed.push(false);
-mixed.push(20);
-console.log(mixed);
+appVersion = 'v1.0';
+console.log(appVersion);
 
-let uid: string|number;
+appVersion = 1.5;
+console.log(appVersion);
 
-// objects
-let ninjaOne: object;
-ninjaOne = { name: 'yoshi', age: 30 };
+mixedArray.push('House');
+mixedArray.push(2020);
+mixedArray.push(true);
+mixedArray.push({ name: 'André', age: 19, });
 
-let ninjaTwo: {
-  name: string,
-  age: number,
-  beltColour: string
-};
-ninjaTwo = { name: 'ken', age: 20, beltColour: 'black' };
+console.log(mixedArray);
