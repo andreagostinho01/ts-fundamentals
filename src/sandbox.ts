@@ -1,23 +1,14 @@
-// let greet: Function = () => {
-//   console.log('hello, world');
-// }
+type StringOrNumber = string | number;
+type UserObj = {
+  name: string,
+  age: number,
+  id: StringOrNumber
+};
 
-// greet = 'hello';
+const logUser = (user: UserObj): void => console.log(user);
 
-// greet = () => {
-//   console.log('hello, again');
-// }
-
-const add = (a: number, b: number, c/*?*/: number | string = 10): void => {
-  console.log(a + b);
-  console.log(c);
-}
-
-add(5, 10, 'ninja');
-
-const minus = (a: number, b: number): number => {
-  return a + b;
-}
-
-let result = minus(10,7);
-console.log(result);
+logUser({
+  name: 'André',
+  age: 19,
+  id: 'b6a32f22-3274-4d3e-b8c0-8619b04eef33'
+});
