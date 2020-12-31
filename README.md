@@ -1,2 +1,2 @@
 # TypeScript Tutorial
-Public, Private & Readonly
+Public, Private, Protected & Readonly
