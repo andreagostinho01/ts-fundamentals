@@ -19,3 +19,16 @@ console.log(invoiceOne.payer); // ok
 console.log(invoiceOne.description); // ok
 console.log(invoiceOne.anything); // ok
 console.log(invoiceOne);
+var AnotherClass = /** @class */ (function () {
+    /*
+      we can also define class properties as constructor parameters
+      so we don't need to assign them inside the constructor
+    */
+    function AnotherClass(a, b, c, d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
+    return AnotherClass;
+}());

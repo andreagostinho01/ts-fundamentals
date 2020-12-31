@@ -25,3 +25,16 @@ console.log(invoiceOne.payer); // ok
 console.log(invoiceOne.description); // ok
 console.log(invoiceOne.anything); // ok
 console.log(invoiceOne);
+
+class AnotherClass {
+  /*
+    we can also define class properties as constructor parameters
+    so we don't need to assign them inside the constructor
+  */
+  constructor(
+    public a: string,
+    private b: string,
+    protected c: number,
+    readonly d: boolean
+  ){}
+}
