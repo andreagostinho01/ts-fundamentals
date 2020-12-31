@@ -1,47 +1,23 @@
-// classes
 class Invoice {
-  client: string;
-  details: string;
+  payer: string;
+  recipient: string;
   amount: number;
 
-  constructor(c: string, d: string, a: number){
-    this.client = c;
-    this.details = d;
-    this.amount = a;
+  constructor(payer: string, recipient: string, amount: number) {
+    this.payer = payer;
+    this.recipient = recipient;
+    this.amount = amount;
   }
 
   format() {
-    return `${this.client} owes £${this.amount} for ${this.details}`;
+    return `${this.payer} owes $${this.amount} to ${this.recipient}`;
   }
 }
 
-const invOne = new Invoice('mario', 'work on the mario website', 250);
-const invTwo = new Invoice('luigi', 'work on the luigi website', 300);
+const invoiceOne = new Invoice('André', 'João', 27.5);
+const invoiceTwo = new Invoice('Daniel', 'André', 60);
+console.log(invoiceOne, invoiceTwo);
 
 let invoices: Invoice[] = [];
-invoices.push(invOne)
-invoices.push(invTwo);
-// invoices.push({ name: 'shaun' });
-
+invoices.push(invoiceOne, invoiceTwo);
 console.log(invoices);
-
-
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-console.log(form.children);
-
-// inputs
-const type = document.querySelector('#type') as HTMLInputElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
-
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
-
-  console.log(
-    type.value, 
-    tofrom.value, 
-    details.value, 
-    amount.valueAsNumber
-  );
-});
