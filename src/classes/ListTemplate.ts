@@ -1,23 +1,25 @@
-import { HasFormatter } from "../interfaces/HasFormatter";
+import HasFormatter from '../interfaces/HasFormatter';
 
-export class ListTemplate {
-  constructor(private container: HTMLUListElement){}
+class ListTemplate {
+    constructor(private container: HTMLUListElement) {}
 
-  render(item: HasFormatter, heading: string, pos: 'start' | 'end'){
-    const li = document.createElement('li');
-  
-    const h4 = document.createElement('h4');
-    h4.innerText = heading;
-    li.append(h4);
+    render(item: HasFormatter, heading: string, position: 'start' | 'end') {
+        const listItem = document.createElement('li');
 
-    const p = document.createElement('p');
-    p.innerText = item.format();
-    li.append(p);
+        const h4 = document.createElement('h4');
+        h4.innerText = heading;
+        listItem.append(h4);
 
-    if(pos === 'start'){
-      this.container.prepend(li);
-    } else {
-      this.container.append(li);
+        const paragraph = document.createElement('p');
+        paragraph.innerText = item.format();
+        
+        listItem.append(paragraph);
+
+        if (position === 'start')
+            this.container.prepend(listItem);
+        else 
+            this.container.append(listItem);
     }
-  }
 }
+
+export default ListTemplate;
