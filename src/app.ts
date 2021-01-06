@@ -1,55 +1,26 @@
-function addUUID(obj: object) {
-  const uuid = 'd97a4534-1cd0-40b5-80aa-b2a1b868bf0b';
-  return { uuid, ...obj };
-}
+enum MovieGenre { ACTION, COMEDY, DRAMA, FANTASY, HORROR }
 
-const userWithUUID = addUUID({ name: 'André', age: 19 });
-console.log(userWithUUID);
-
-/* 
-  the next line throws an error because TS can't see there's a name property;
-  to solve this we need to use Generics;
-  Generics referece: https://www.typescriptlang.org/docs/handbook/generics.html
-*/
-// console.log(userWithUUID.name); // error
-
-// passed parameter must be an object
-function addUUIDAgain <T extends object> (obj: T) {
-  const uuid = '4831461a-2445-40a8-9cbb-9f1706aeb09c';
-  return { uuid, ...obj };
-}
-
-const anotherUserWithUUID = addUUIDAgain({ name: 'Fernando', age: 35 });
-console.log(anotherUserWithUUID);
-console.log(anotherUserWithUUID.name);
-
-console.log('==================================');
-
-function logCity <T extends { city: string }> (city: T) {
-  console.log(city);
-  return true;
-}
-
-logCity({ city: 'Brotas' });
-logCity({ city: 'Campinas', state: 'São Paulo' });
-
-interface Food<T> {
+interface Movie<T> {
   name: string,
+  genre: MovieGenre,
   data: T
 }
 
-const hotDog: Food<string> = {
-  name: 'Hot dog',
+const movieOne: Movie<string> = {
+  name: 'Movie one',
+  genre: MovieGenre.ACTION,
   data: 'some information',
 };
 
-const pizza: Food<object> = {
-  name: 'Pizza',
-  data: {
-    ingredients: ['cheese', 'pepperoni', 'tomato sauce'],
-    price: 30
-  }
+const movieTwo: Movie<string> = {
+  name: 'Movie two',
+  genre: MovieGenre.COMEDY,
+  data: 'some information'
 };
 
-console.log(hotDog);
-console.log(pizza);
+/*
+  Important: the movie genre name won't be showed in the browser console, instead
+  it will appear as an array index (number type)
+*/
+console.log(movieOne);
+console.log(movieTwo);
