@@ -1,40 +1,55 @@
-import Invoice from './classes/Invoice.js';
-import Payment from './classes/Payment.js';
-import ListTemplate from './classes/ListTemplate.js';
-import HasFormatter from './interfaces/HasFormatter.js';
+function addUUID(obj: object) {
+  const uuid = 'd97a4534-1cd0-40b5-80aa-b2a1b868bf0b';
+  return { uuid, ...obj };
+}
 
-let docOne: HasFormatter;
-let docTwo: HasFormatter;
-let docs: HasFormatter[] = [];
+const userWithUUID = addUUID({ name: 'André', age: 19 });
+console.log(userWithUUID);
 
-docOne = new Invoice('Thiago', 'Uber ride', 15);
-docTwo = new Payment('André', 'Printer maintenance', 80);
+/* 
+  the next line throws an error because TS can't see there's a name property;
+  to solve this we need to use Generics;
+  Generics referece: https://www.typescriptlang.org/docs/handbook/generics.html
+*/
+// console.log(userWithUUID.name); // error
 
-docs.push(docOne, docTwo);
-console.log(docs);
+// passed parameter must be an object
+function addUUIDAgain <T extends object> (obj: T) {
+  const uuid = '4831461a-2445-40a8-9cbb-9f1706aeb09c';
+  return { uuid, ...obj };
+}
 
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
+const anotherUserWithUUID = addUUIDAgain({ name: 'Fernando', age: 35 });
+console.log(anotherUserWithUUID);
+console.log(anotherUserWithUUID.name);
 
-const type = document.querySelector('#type') as HTMLSelectElement;
-const toFrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
+console.log('==================================');
 
-// list template instance
-const ul = document.querySelector('ul') as HTMLUListElement;
-const list = new ListTemplate(ul);
+function logCity <T extends { city: string }> (city: T) {
+  console.log(city);
+  return true;
+}
 
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
+logCity({ city: 'Brotas' });
+logCity({ city: 'Campinas', state: 'São Paulo' });
 
-  let doc: HasFormatter;
+interface Food<T> {
+  name: string,
+  data: T
+}
 
-  doc = type.value === 'invoice'
-  ? new Invoice(toFrom.value, details.value, amount.valueAsNumber)
-  : new Payment(toFrom.value, details.value, amount.valueAsNumber);
+const hotDog: Food<string> = {
+  name: 'Hot dog',
+  data: 'some information',
+};
 
-  list.render(doc, type.value, 'end');
-  // list.render(doc, type.value, 'start');
+const pizza: Food<object> = {
+  name: 'Pizza',
+  data: {
+    ingredients: ['cheese', 'pepperoni', 'tomato sauce'],
+    price: 30
+  }
+};
 
-  console.log(doc);
-});
+console.log(hotDog);
+console.log(pizza);
